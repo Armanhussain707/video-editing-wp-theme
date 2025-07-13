@@ -5,6 +5,23 @@ A fully hand-coded, performance-optimized course website developed using **pure 
 This project showcases real-world skills in **custom WordPress theme development**, **CMS dashboard control**, and **SEO-optimized UI/UX** using industry standards.
 
 ---
+## 📈 Relevant Keywords & Skills (For Recruiters, SEO, and ATS)
+
+This project demonstrates strong technical and real-world WordPress development skills. Below are key focus areas that define the scope and technologies involved in this custom theme project:
+
+- `WordPress Theme Developer`
+- `Hand-coded Theme (No Page Builder)`
+- `Elementor Alternative Approach`
+- `Frontend to WordPress Conversion`
+- `HTML5, CSS3, JavaScript, jQuery`
+- `Custom Post Types (CPTs)`
+- `WordPress CMS Dashboard Configuration`
+- `Custom Theme Options via Customizer`
+- `SEO Optimized Structure`
+- `Responsive Web Design`
+- `PHP Templating & Hooks`
+- `Video Course Website Theme`
+- `Clean, Fast-loading UI`
 
 ## ✨ What Makes This Project Stand Out?
 
