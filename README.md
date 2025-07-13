@@ -5,8 +5,7 @@ A fully hand-coded, performance-optimized course website developed using **pure 
 This project showcases real-world skills in **custom WordPress theme development**, **CMS dashboard control**, and **SEO-optimized UI/UX** using industry standards.
 
 ---
-## 📈 Relevant Keywords & Skills (For Recruiters, SEO, and ATS)
-
+## 📈 Relevant Keywords & Skills
 This project demonstrates strong technical and real-world WordPress development skills. Below are key focus areas that define the scope and technologies involved in this custom theme project:
 
 - `WordPress Theme Developer`
