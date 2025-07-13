@@ -69,5 +69,5 @@ This project showcases real-world skills in **custom WordPress theme development
 
 1. Clone this repo:
 ```bash
-git clone https://github.com/arman-hussain/video-editing-wp-theme.git
+git clone https://github.com/arman-hussain/video-editing-wp-theme.git](https://github.com/Armanhussain707/video-editing-wp-theme/tree/main)
 
