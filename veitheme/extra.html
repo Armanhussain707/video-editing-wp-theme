@@ -1,0 +1,183 @@
+<input type="text" name="name" id="name" placeholder="Enter your name" [text* text-734 class:form-control placeholder "
+Enter your name"] class="form-control" required>
+
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="form-group">
+      <label id="name-label" for="name">Name</label>
+      [text* text-734 class:form-control placeholder "Enter your name"]
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label id="email-label" for="email">Email</label>
+        <input type="email" name="email" id="email" placeholder="Enter your email" class="form-control" required>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label id="number-label" for="number">Phone</label>
+        <input type="text" name="" id="number" min="10" max="99" class="form-control" placeholder="Phone">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Course</label>
+        <select id="dropdown" name="role" class="form-control" required>
+          <option disabled selected value>Select</option>
+          <option value="student">Student</option>
+          <option value="job">Full Time Job</option>
+          <option value="learner">Full Time Learner</option>
+          <option value="preferNo">Prefer not to say</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label> Message</label>
+        <textarea id="comments" class="form-control" name="comment" placeholder="Enter your comment here..."></textarea>
+      </div>
+    </div>
+  </div>
+  [submit class:form-btn]
+
+
+
+
+
+  <!-- page-courses.php code  -->
+
+  <?php
+/*
+Template Name: All Courses
+*/
+get_header(); 
+
+?>
+
+
+
+<!-- wrapper hero -->
+<div class="wrapper-hero-img">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="wrapper-content text-center">
+                    <h1><?php echo get_theme_mod('All Courses_banner_text_setting', 'All Courses'); ?></h1>
+                    <p><?php echo get_theme_mod('All Courses_banner_subtext_setting', 'Read latest articles at Video Editing Institute on useful topics like photo editing, color
+                            grading, video editing, color corrections, chrome keying, etc.'); ?></p>
+                    <div class="button-back">
+                    <img src="<?php echo get_template_directory_uri(); ?>\icon\img_memphis2.png" alt="About Us Banner" class="img-fluid">
+
+                    </div>
+                    <div class="d-flex align-items-center justify-content-center mt-3">
+                        <a href="<?php echo home_url(); ?>">Home</a>
+                        <i class='bx bx-chevron-right'></i>
+                        <span>Courses</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<?php
+
+
+
+// Get the current page number
+$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
+// Fetch "courses" posts
+$args = array(
+    'post_type'      => 'courses', // Custom post type
+    'posts_per_page' => 5,         // Show 5 courses per page
+    'paged'          => $paged
+);
+
+$query = new WP_Query($args);
+
+if ($query->have_posts()) :
+?>
+
+    <div class="course-main">
+        <div class="container">
+            <?php while ($query->have_posts()) : $query->the_post(); ?>
+                <div class="course-wrapper" data-aos="fade-up" data-aos-once="true">
+                    <div class="row">
+                        <!-- Course Image -->
+                        <div class="col-md-5 gx-md-5">
+                            <div class="course-img text-center">
+                                <?php if (has_post_thumbnail()) : ?>
+                                    <img src="<?php the_post_thumbnail_url(); ?>" class="img-fluid" alt="<?php the_title(); ?>">
+                                <?php endif; ?>
+                                <div class="social-icon mt-4">
+                                    <a href="#"><i class='bx bxl-facebook'></i></a>
+                                    <a href="#"><i class='bx bxl-twitter'></i></a>
+                                    <a href="#"><i class='bx bxl-youtube'></i></a>
+                                    <a href="#"><i class='bx bxl-linkedin'></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Course Details -->
+                        <div class="col-md-7 gx-md-5">
+                            <div class="course-detail mt-4 mt-md-0">
+                            
+
+                                <h5><span>Duration: </span> <?php echo get_field('add_duration'); ?></h5>
+                                <h5><span>Training Type: </span> <?php echo get_field('add_training_type'); ?></h5>
+                                <h5><span>Training Mode: </span> <?php echo get_field('add_training_mode'); ?></h5>
+                                <h5><span>Course Type: </span> <?php echo get_field('add_course_type'); ?></h5>
+                                <p><?php echo get_field('add_top_description'); ?></p>
+
+                                <button class="gradient-btn mt-4 mt-lg-5">
+                                    <a href="<?php the_permalink(); ?>">Know More</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endwhile; ?>
+            
+            <!-- Pagination -->
+             <!-- Pagination -->
+        <div class="col-12 d-flex justify-content-center mt-5">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <?php
+                    $big = 999999999; // Need an unlikely integer
+                    $pages = paginate_links(array(
+                        'base'      => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+                        'format'    => '?paged=%#%',
+                        'current'   => max(1, get_query_var('paged')),
+                        'total'     => $query->max_num_pages,
+                        'prev_text' => 'Previous',
+                        'next_text' => 'Next',
+                        'type'      => 'array', // This makes it return an array instead of echoing
+                    ));
+
+                    if (!empty($pages)) {
+                        foreach ($pages as $page) {
+                            echo '<li class="page-item">' . str_replace('page-numbers', 'page-link', $page) . '</li>';
+                        }
+                    }
+                    ?>
+                </ul>
+            </nav>
+        </div>
+
+        </div>
+    </div>
+<?php
+endif;
+wp_reset_postdata();
+get_footer();
+?>
